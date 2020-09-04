@@ -1,0 +1,39 @@
+<input onclick="clear()" id="input" type="text">
+<button onclick='send()' id="button">Send</button>
+<p id="info"></p>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+<script>
+ 
+    function send(){
+    
+      $.ajax({
+    type: "POST", 
+    url: "/api",
+    data: {"text": $('#input').val()},
+    dataType : 'json',
+    success: function(data) { 
+        $('#input').val('')
+        $('#info').text('sended check the pixel table!!!');
+        
+    },
+    error: function (xmlHttpRequest, textStatus, errorThrown) {
+         
+    }
+});
+
+    
+    }
+
+function clear(){
+    $('#info').val('')
+}
+</script>
